@@ -1,0 +1,39 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  text-rendering: auto;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #111236 !important;
+}
+
+.carouselSwiperComponent {
+  --swiper-pagination-color: #b30222;
+}
+
+.carouselSwiperComponent .swiper-pagination {
+  margin-top: 20px !important; 
+}
