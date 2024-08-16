@@ -20,7 +20,5 @@ export default function LogoComponent() {
 		<div className="logo flex items-center">
 			<LogoVersion />
 		</div>
-	) : (
-		<div></div>
-	);
+	) : null;
 }

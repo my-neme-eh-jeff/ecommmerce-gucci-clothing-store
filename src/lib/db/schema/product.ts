@@ -1,4 +1,4 @@
-import { relations } from "drizzle-orm"
+import { relations } from "drizzle-orm";
 import {
     decimal,
     integer,
@@ -6,8 +6,9 @@ import {
     text,
     timestamp,
     uuid
-} from "drizzle-orm/pg-core"
-import { cartItems } from "./cart"
+} from "drizzle-orm/pg-core";
+import { createSelectSchema } from 'drizzle-zod';
+import { cartItems } from "./cart";
 
 export const products = pgTable("product", {
     id: uuid("id").defaultRandom().primaryKey(),
@@ -23,3 +24,5 @@ export const products = pgTable("product", {
 export const productsRelations = relations(products, ({ many }) => ({
     cartItems: many(cartItems),
 }))
+
+export const productsSelectSchema = createSelectSchema(products)

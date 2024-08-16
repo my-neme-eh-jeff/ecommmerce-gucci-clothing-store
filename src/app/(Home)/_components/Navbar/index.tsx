@@ -17,7 +17,7 @@ export default function Navbar() {
 					className="flex items-center self-stretch border bg-amber-200 px-5 text-ellipsis text-sm md:text-md lg:text-lg"
 					action={async () => {
 						"use server";
-						await signIn("google", { redirectTo: "/dashboard" });
+						await signIn("google", { redirectTo: "/product" });
 					}}
 				>
 					<button type="submit">Login / SignUp</button>
