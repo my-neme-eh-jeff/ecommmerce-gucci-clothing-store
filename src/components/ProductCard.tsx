@@ -50,7 +50,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 	};
 
 	return (
-		<Card className="w-full max-w-sm">
+		<Card className="w-full max-w-sm ">
 			<CardContent className="p-4">
 				<Image
 					src={product.imageUrl || ""}

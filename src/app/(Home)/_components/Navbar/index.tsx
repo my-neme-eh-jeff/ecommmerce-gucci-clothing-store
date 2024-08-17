@@ -14,13 +14,18 @@ export default function Navbar() {
 			</div>
 			<div className="flex justify-stretch">
 				<form
-					className="flex items-center self-stretch border bg-amber-200 px-5 text-ellipsis text-sm md:text-md lg:text-lg"
+					className="flex"
 					action={async () => {
 						"use server";
 						await signIn("google", { redirectTo: "/product" });
 					}}
 				>
-					<button type="submit">Login / SignUp</button>
+					<button
+						type="submit"
+						className="items-center self-stretch border bg-amber-200 px-5 text-ellipsis text-sm md:text-md lg:text-lg"
+					>
+						Login to see products
+					</button>
 				</form>
 				<button
 					className="flex items-center self-stretch bg-black px-6"

@@ -43,6 +43,7 @@ export default function ProductsPage() {
 		isFetchingNextPage,
 		status,
 		isLoading,
+		
 	} = useInfiniteQuery({
 		queryKey: ["products"],
 		queryFn: fetchProducts,
