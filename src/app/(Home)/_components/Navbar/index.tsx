@@ -17,7 +17,7 @@ export default function Navbar() {
 					className="flex"
 					action={async () => {
 						"use server";
-						await signIn("google", { redirectTo: "/product" });
+						await signIn("google", { redirectTo: "/products" });
 					}}
 				>
 					<button

@@ -4,12 +4,12 @@ import { products } from '@/lib/db/schema/product'
 import { eq } from 'drizzle-orm'
 // biome-ignore lint/style/useImportType: <explanation>
 import { NextRequest, NextResponse } from 'next/server'
-import { getSession } from 'next-auth/react'
 import { insertCartItemSchema } from '@/lib/validators'
+import { auth } from '@/auth'
 
 export async function GET() {
     try {
-        const session = await getSession()
+        const session = await auth()
         if (!session?.user) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
@@ -27,13 +27,12 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
     try {
-        const session = await getSession()
+        const session = await auth()
         if (!session?.user) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
         const userId = session.user.id as string
         const body = await req.json()
-
         const validatedData = insertCartItemSchema.safeParse({ ...body, userId })
         if (!validatedData.success) {
             return NextResponse.json({ error: validatedData.error.errors }, { status: 400 })

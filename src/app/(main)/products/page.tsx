@@ -3,18 +3,18 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import { ProductCard } from "@/components/ProductCard";
-import { SpinnerIcon } from "@/components/Icons";
+import { SpinnerIcon } from "@/Assets/Icons";
 
 interface Product {
 	id: string;
 	name: string;
-	description: string | null;
+	description: string;
 	price: string;
-	imageUrl: string | null;
-	category: string | null;
+	imageUrl: string;
+	category: string;
 	stock: number;
-	createdAt: Date | null;
-	updatedAt: Date | null;
+	createdAt: Date;
+	updatedAt: Date;
 }
 
 interface ProductsResponse {
@@ -23,7 +23,7 @@ interface ProductsResponse {
 }
 
 const PRODUCTS_PER_ROW = 4;
-const INITIAL_ROWS = 2; 
+const INITIAL_ROWS = 2;
 
 const fetchProducts = async ({ pageParam = 0 }): Promise<ProductsResponse> => {
 	const res = await fetch(
@@ -43,7 +43,6 @@ export default function ProductsPage() {
 		isFetchingNextPage,
 		status,
 		isLoading,
-		
 	} = useInfiniteQuery({
 		queryKey: ["products"],
 		queryFn: fetchProducts,
@@ -79,16 +78,20 @@ export default function ProductsPage() {
 	const products = data?.pages.flatMap((page) => page.products) || [];
 
 	return (
-		<div className="container mx-auto py-8">
-			<h1 className="text-3xl font-bold mb-8">Products</h1>
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+		<div className="mx-auto max-w-2xl px-2 py-4 sm:px-6 sm:py-10 md:max-w-7xl lg:max-w-[96rem] lg:px-8">
+			<h1 className="mb-0 text-center text-2xl font-bold text-gray-800 md:mb-10 md:text-3xl">
+				Our Products
+			</h1>
+			<div className="mt-4 grid grid-cols-1 gap-x-2 gap-y-10 md:gap-x-4 md:gap-y-15 sm:grid-cols-2 md:mt-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-5">
 				{products.map((product) => (
 					<ProductCard key={product.id} product={product} />
 				))}
 			</div>
 			<div ref={containerRef} className="h-20 flex items-center justify-center">
 				{isFetchingNextPage ? (
-					<SpinnerIcon />
+					<SpinnerIcon
+						className={`${status === "pending" && "min-h-screen place-content-center place-items-center justify-center flex"}`}
+					/>
 				) : hasNextPage ? (
 					<span>Load more</span>
 				) : products.length === 0 ? (

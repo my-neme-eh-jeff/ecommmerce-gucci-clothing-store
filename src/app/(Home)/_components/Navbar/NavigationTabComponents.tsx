@@ -20,37 +20,37 @@ export default function NavigationTabComponents() {
 	const menMenuItems: menuItem[] = [
 		{
 			title: "Gucci Ace Sneaker",
-			href: "/product",
+			href: "/products",
 			description:
 				"Elevate your everyday style with this sleek and comfortable sneaker.",
 		},
 		{
 			title: "Gucci Dionysus Bag",
-			href: "/product",
+			href: "/products",
 			description:
 				"Make a statement with this luxurious and versatile bag, featuring Gucci's signature tiger head buckle.",
 		},
 		{
 			title: "Gucci Bamboo Watch",
-			href: "/product",
+			href: "/products",
 			description:
 				"Timeless elegance meets modern functionality in this stylish and functional watch.",
 		},
 		{
 			title: "Gucci Ophelia Sunglasses",
-			href: "/product",
+			href: "/products",
 			description:
 				"Protect your eyes in style with these stylish and protective sunglasses.",
 		},
 		{
 			title: "Gucci Horsebit Loafer",
-			href: "/product",
+			href: "/products",
 			description:
 				"Add a touch of sophistication to your outfit with this stylish and comfortable loafer.",
 		},
 		{
 			title: "Gucci Bamboo Wallet",
-			href: "/product",
+			href: "/products",
 			description:
 				"Keep your essentials organized and stylish with this functional and elegant wallet.",
 		},
@@ -58,37 +58,37 @@ export default function NavigationTabComponents() {
 	const womenMenuItems: menuItem[] = [
 		{
 			title: "Gucci Bamboo Handbag",
-			href: "/product",
+			href: "/products",
 			description:
 				"Carry your essentials in style with this versatile and elegant handbag.",
 		},
 		{
 			title: "Gucci Dionysus Clutch",
-			href: "/product",
+			href: "/products",
 			description:
 				"Add a touch of glamour to your outfit with this luxurious and stylish clutch.",
 		},
 		{
 			title: "Gucci Bamboo Watch",
-			href: "/product",
+			href: "/products",
 			description:
 				"Timeless elegance meets modern functionality in this stylish and functional watch.",
 		},
 		{
 			title: "Gucci Ophelia Sunglasses",
-			href: "/product",
+			href: "/products",
 			description:
 				"Protect your eyes in style with these stylish and protective sunglasses.",
 		},
 		{
 			title: "Gucci Horsebit Loafer",
-			href: "/product",
+			href: "/products",
 			description:
 				"Add a touch of sophistication to your outfit with this stylish and comfortable loafer.",
 		},
 		{
 			title: "Gucci Bamboo Wallet",
-			href: "/product",
+			href: "/products",
 			description:
 				"Keep your essentials organized and stylish with this functional and elegant wallet.",
 		},
@@ -96,37 +96,37 @@ export default function NavigationTabComponents() {
 	const childrenMenuItems: menuItem[] = [
 		{
 			title: "Gucci Kids Ace Sneaker",
-			href: "/product",
+			href: "/products",
 			description:
 				"Elevate your child's style with this sleek and comfortable sneaker.",
 		},
 		{
 			title: "Gucci Kids Dionysus Bag",
-			href: "/product",
+			href: "/products",
 			description:
 				"Make a statement with this luxurious and versatile bag, featuring Gucci's signature tiger head buckle.",
 		},
 		{
 			title: "Gucci Kids Bamboo Watch",
-			href: "/product",
+			href: "/products",
 			description:
 				"Timeless elegance meets modern functionality in this stylish and functional watch.",
 		},
 		{
 			title: "Gucci Kids Ophelia Sunglasses",
-			href: "/product",
+			href: "/products",
 			description:
 				"Protect your child's eyes in style with these stylish and protective sunglasses.",
 		},
 		{
 			title: "Gucci Kids Horsebit Loafer",
-			href: "/product",
+			href: "/products",
 			description:
 				"Add a touch of sophistication to your child's outfit with this stylish and comfortable loafer.",
 		},
 		{
 			title: "Gucci Kids Bamboo Wallet",
-			href: "/product",
+			href: "/products",
 			description:
 				"Keep your child's essentials organized and stylish with this functional and elegant wallet.",
 		},
