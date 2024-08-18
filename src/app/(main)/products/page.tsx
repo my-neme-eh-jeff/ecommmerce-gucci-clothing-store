@@ -79,7 +79,7 @@ export default function ProductsPage() {
 
 	if (isLoading) {
 		return (
-			<div className="w-full flex justify-center align-middle">
+			<div className="w-full min-h-screen flex justify-center align-middle place-items-center place-content-between">
 				<SpinnerIcon />
 			</div>
 		);

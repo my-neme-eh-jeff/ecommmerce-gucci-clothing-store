@@ -1,7 +1,7 @@
 import { db } from '@/lib/db'
 import { cartItems } from '@/lib/db/schema/cart'
 import { products } from '@/lib/db/schema/product'
-import { eq } from 'drizzle-orm'
+import { eq, sql } from 'drizzle-orm'
 // biome-ignore lint/style/useImportType: <explanation>
 import { NextRequest, NextResponse } from 'next/server'
 import { insertCartItemSchema } from '@/lib/validators'
@@ -37,22 +37,30 @@ export async function POST(req: NextRequest) {
         if (!validatedData.success) {
             return NextResponse.json({ error: validatedData.error.errors }, { status: 400 })
         }
-
         const { productId, quantity } = validatedData.data
-
         const product = await db.select().from(products).where(eq(products.id, productId)).limit(1)
         if (product.length === 0) {
             return NextResponse.json({ error: 'Product not found' }, { status: 404 })
         }
+        const upsertResult = await db
+            .insert(cartItems)
+            .values({
+                userId,
+                productId,
+                quantity,
+            })
+            .onConflictDoUpdate({
+                target: [cartItems.userId, cartItems.productId],
+                set: {
+                    quantity: sql`${cartItems.quantity} + EXCLUDED.quantity`,
+                    updatedAt: sql`CURRENT_TIMESTAMP`,
+                },
+            })
+            .returning()
 
-        const newCartItem = await db.insert(cartItems).values({
-            userId,
-            productId,
-            quantity,
-        }).returning()
-        return NextResponse.json(newCartItem[0], { status: 201 })
+        return NextResponse.json(upsertResult[0], { status: 201 })
     } catch (error) {
-        console.error('Error adding item to cart:', error)
+        console.error('Error adding/updating item in cart:', error)
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
     }
 }

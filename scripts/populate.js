@@ -42,7 +42,7 @@ async function insertProduct(product) {
 }
 
 async function insertProducts() {
-	for (let i = 0; i < 31; i++) {
+	for (let i = 0; i < 50; i++) {
 		const product = generateProduct(i);
 		await insertProduct(product);
 	}

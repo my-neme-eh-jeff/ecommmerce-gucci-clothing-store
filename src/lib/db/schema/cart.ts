@@ -4,6 +4,7 @@ import {
     pgTable,
     text,
     timestamp,
+    uniqueIndex,
     uuid
 } from "drizzle-orm/pg-core"
 import { users } from "./user"
@@ -20,7 +21,10 @@ export const cartItems = pgTable("cart_item", {
     quantity: integer("quantity").notNull().default(1),
     createdAt: timestamp("created_at").defaultNow(),
     updatedAt: timestamp("updated_at").defaultNow(),
-})
+}, (table) => ({
+    unq: uniqueIndex('user_product_unique').on(table.userId, table.productId),
+}));
+
 
 export const cartItemsRelations = relations(cartItems, ({ one }) => ({
     user: one(users, {

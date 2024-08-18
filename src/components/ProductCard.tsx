@@ -3,10 +3,12 @@
 import { SpinnerIcon } from "@/Assets/Icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import useCartStore from "@/store/CartStore";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
+import SoldImage from "@/Assets/Images/sold.png";
 
 interface ProductCardProps {
 	product: {
@@ -24,24 +26,13 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 	const [isLoading, setIsLoading] = useState(false);
+	const addToCart = useCartStore((state) => state.addToCart);
 
 	const handleAddToCart = async () => {
 		const toastId = toast.loading("Adding to cart...");
 		try {
 			setIsLoading(true);
-			const response = await fetch("/api/cart", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					productId: product.id,
-					quantity: 1,
-				}),
-			});
-			if (!response.ok) {
-				throw new Error("Failed to add to cart");
-			}
+			await addToCart(product.id, 1);
 			toast.success(`Product ${product.name} added to cart`, { id: toastId });
 		} catch (error) {
 			toast.error("An unexpected error occurred", { id: toastId });
@@ -54,6 +45,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 	return (
 		<Card className="group relative h-full overflow-hidden rounded-md border hover:border-neutral-700/20 min-w-[250px]">
 			<div className="aspect-square overflow-hidden transition-all duration-300 group-hover:opacity-75">
+				{product.stock === 0 && (
+					<div className="absolute top-2 right-2 z-40">
+						<Image
+							src={SoldImage}
+							alt="Sold Out"
+							width={75}
+							height={75}
+							className="z-40"
+						/>
+					</div>
+				)}
 				<Image
 					src={product.imageUrl}
 					alt={product.name}
@@ -74,6 +76,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 			<CardFooter className="p-4">
 				<Button
 					isLoading={isLoading}
+					disabled={product.stock === 0}
 					onClick={handleAddToCart}
 					className="w-full flex items-center justify-center"
 				>

@@ -1,14 +1,14 @@
-// biome-ignore lint/style/useImportType: <explanation>
-import { NextRequest, NextResponse } from 'next/server'
+import { auth } from '@/auth'
 import { db } from '@/lib/db'
 import { cartItems } from '@/lib/db/schema/cart'
-import { eq, and } from 'drizzle-orm'
-import { getSession } from 'next-auth/react'
 import { updateCartItemSchema } from '@/lib/validators'
+import { and, eq } from 'drizzle-orm'
+// biome-ignore lint/style/useImportType: <explanation>
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
     try {
-        const session = await getSession()
+        const session = await auth()
         if (!session?.user) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
@@ -35,7 +35,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
     try {
-        const session = await getSession()
+        const session = await auth()
         if (!session?.user) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
@@ -46,7 +46,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
         if (deletedItem.length === 0) {
             return NextResponse.json({ error: 'Cart item not found' }, { status: 404 })
         }
-        return NextResponse.json(null, { status: 204 })
+        return NextResponse.json(null, { status: 200 })
     } catch (error) {
         console.error('Error deleting cart item:', error)
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

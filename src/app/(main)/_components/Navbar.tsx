@@ -14,9 +14,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CircleUser, Menu, Package2 } from "lucide-react";
 import Link from "next/link";
 import SearchInput from "./SearchInput";
+import CartIcon from "./CartIcon";
 
 export default async function Navbar() {
 	const session = await auth();
+
 	return (
 		<header className="sticky z-50 top-0 flex h-16 items-center gap-4 border-b px-4 md:px-6 backdrop-blur-2xl bg-[#fcd59e12]">
 			<nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 ">
@@ -38,12 +40,6 @@ export default async function Navbar() {
 					className="text-muted-foreground hover:text-foreground"
 				>
 					Products
-				</Link>
-				<Link
-					href={"/cart"}
-					className="text-muted-foreground hover:text-foreground"
-				>
-					Cart
 				</Link>
 			</nav>
 			<Sheet>
@@ -80,6 +76,7 @@ export default async function Navbar() {
 					</nav>
 				</SheetContent>
 			</Sheet>
+			<CartIcon />
 			<div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
 				<SearchInput />
 				<DropdownMenu>

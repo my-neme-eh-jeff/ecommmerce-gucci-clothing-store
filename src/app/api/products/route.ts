@@ -38,8 +38,8 @@ export async function POST(req: NextRequest) {
         if (!validatedData.success) {
             return NextResponse.json({ error: validatedData.error.errors }, { status: 400 })
         }
-        const newProduct = await db.insert(products).values(validatedData.data).returning()
-        return NextResponse.json(newProduct[0], { status: 201 })
+        const newProduct = await db.insert(products).values(body).returning()
+        return NextResponse.json(body, { status: 201 })
     } catch (error) {
         console.error('Error creating product:', error)
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
