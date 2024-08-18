@@ -4,6 +4,7 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import { ProductCard } from "@/components/ProductCard";
 import { SpinnerIcon } from "@/Assets/Icons";
+import useProductStore from "@/store/ProductStore";
 
 interface Product {
 	id: string;
@@ -35,6 +36,8 @@ const fetchProducts = async ({ pageParam = 0 }): Promise<ProductsResponse> => {
 
 export default function ProductsPage() {
 	const containerRef = useRef<HTMLDivElement>(null);
+	const setProducts = useProductStore((state) => state.setProducts);
+	const filteredProducts = useProductStore((state) => state.filteredProducts);
 
 	const {
 		data,
@@ -49,6 +52,13 @@ export default function ProductsPage() {
 		getNextPageParam: (lastPage) => lastPage.nextCursor,
 		initialPageParam: 0,
 	});
+
+	useEffect(() => {
+		if (data) {
+			const allProducts = data.pages.flatMap((page) => page.products);
+			setProducts(allProducts);
+		}
+	}, [data, setProducts]);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -83,7 +93,7 @@ export default function ProductsPage() {
 				Our Products
 			</h1>
 			<div className="mt-4 grid grid-cols-1 gap-x-2 gap-y-10 md:gap-x-4 md:gap-y-15 sm:grid-cols-2 md:mt-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-5">
-				{products.map((product) => (
+				{filteredProducts.map((product) => (
 					<ProductCard key={product.id} product={product} />
 				))}
 			</div>

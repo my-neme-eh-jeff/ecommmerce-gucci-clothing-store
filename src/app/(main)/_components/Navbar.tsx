@@ -1,5 +1,6 @@
-import { CircleUser, Menu, Package2, Search } from "lucide-react";
-import Link from "next/link";
+import { GucciLogoIcon } from "@/Assets/Icons";
+import { auth, signOut } from "@/auth";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -9,11 +10,10 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { auth, signOut } from "@/auth";
-import { GucciLogoIcon } from "@/Assets/Icons";
+import { CircleUser, Menu, Package2 } from "lucide-react";
+import Link from "next/link";
+import SearchInput from "./SearchInput";
 
 export default async function Navbar() {
 	const session = await auth();
@@ -81,16 +81,7 @@ export default async function Navbar() {
 				</SheetContent>
 			</Sheet>
 			<div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-				<form className="ml-auto flex-1 sm:flex-initial">
-					<div className="relative">
-						<Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-						<Input
-							type="search"
-							placeholder="Search products..."
-							className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-						/>
-					</div>
-				</form>
+				<SearchInput />
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
 						<Button variant="secondary" size="icon" className="rounded-full">
