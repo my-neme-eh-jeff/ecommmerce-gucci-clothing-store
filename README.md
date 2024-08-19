@@ -5,7 +5,7 @@
 
 #### In order to view the products you will hvae to login with your google account.
 
-## Getting Started
+# Getting Started
 
 First, clone the repository:
 
