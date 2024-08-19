@@ -1,6 +1,5 @@
-# Next.js Design Showcase
 
-This is a [Next.js](https://nextjs.org/) project showcasing my design skills. The design is based on a Figma project, which can be found [here](https://www.figma.com/design/U5BGT9XYSXkPxBAoCR5eX2/stealth-front-end-test?node-id=0-1&t=Bylv9hgWmDNBB5Hl-1). It is fully responsive.
+I have made a full fletched backend with auth in Nextjs, with proper error handling. There is logic for discount coupoun generation as well with users having a 30% chance of getting generated a discount.
 
 ## Getting Started
 
