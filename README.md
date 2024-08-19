@@ -1,7 +1,7 @@
 
-###I have made a full fletched backend with auth in Nextjs, postgresql db hosted by supabase, with proper error handling. 
+### I have made a full fletched backend with auth in Nextjs, postgresql db hosted by supabase, with proper error handling showing a demo e-commer clothing app. The website is fully responsive.
 
-###There is logic for discount coupoun generation as well with users having a 30% chance of getting generated a discount (If availible). 
+### There is logic for discount coupoun generation as well with users having a 30% chance of getting generated a discount (If availible). 
 
 
 
