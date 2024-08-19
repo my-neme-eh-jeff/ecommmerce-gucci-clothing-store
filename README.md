@@ -3,7 +3,7 @@
 
 ### There is logic for discount coupoun generation as well with users having a 30% chance of getting generated a discount (If availible). 
 
-
+#### In order to view the products you will hvae to login with your google account.
 
 ## Getting Started
 
