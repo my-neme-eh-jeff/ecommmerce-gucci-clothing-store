@@ -1,11 +1,25 @@
 
-### I have made a full fletched backend with auth in Nextjs, postgresql db hosted by supabase, with proper error handling showing a demo e-commer clothing app. The website is fully responsive.
+# CHAPA E-commerce Website
 
-### There is logic for discount coupoun generation as well with users having a 30% chance of getting generated a discount (If availible). 
+### Project Overview
 
-#### In order to view the products you will have to login with your google account.
+- Full-fledged backend with authentication in Next.js
+- PostgreSQL database hosted by Supabase
+- Proper error handling
+- Demo e-commerce clothing app
+- Fully responsive website
+- Infinite product loading as user scrolls down
+- Discount coupon generation logic
+  - Users have a 30% chance of getting a discount (if available)
 
-# Getting Started
+### Additional Features
+
+- Home page showcases design skills
+- Product viewing requires Google account login
+
+
+
+## Getting Started
 
 First, clone the repository:
 
